@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamentos - CupCake Delícia</title>
+    <link rel="stylesheet" href="Pagamentos.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><h1>CupCake Delícia</h1></a>
+            </div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Cardapio.html">Cardápio</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="Contato.html">Contato</a></li>
+                    <li><a href="Pagamentos.html">Pagamentos</a></li>
+                </ul>
+                <div class="cart-icon" id="cart-icon">
+                    <span class="cart-count" id="cart-count">0</span>
+                    🛒
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="pagamentos" class="pagamentos">
+        <div class="container">
+            <div class="pagamentos-header">
+                <h2>Formas de Pagamento</h2>
+                <p>Aceitamos diversas formas de pagamento para sua comodidade. Escolha a que melhor se adapta às suas necessidades.</p>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <div class="payment-icon">💳</div>
+                    <h3>Cartão de Crédito</h3>
+                    <p>Aceitamos Visa, Mastercard, American Express e Elo.</p>
+                    <div class="payment-details">
+                        <span class="detail-item">✓ Parcelamento em até 12x</span>
+                        <span class="detail-item">✓ Sem juros no cartão</span>
+                        <span class="detail-item">✓ Pagamento seguro</span>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-icon">💳</div>
+                    <h3>Cartão de Débito</h3>
+                    <p>Pagamento imediato com seu cartão de débito.</p>
+                    <div class="payment-details">
+                        <span class="detail-item">✓ Pagamento instantâneo</span>
+                        <span class="detail-item">✓ Sem taxas adicionais</span>
+                        <span class="detail-item">✓ Aceita todas as bandeiras</span>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-icon">📱</div>
+                    <h3>Pix</h3>
+                    <p>Pagamento instantâneo via Pix. Rápido e seguro.</p>
+                    <div class="payment-details">
+                        <span class="detail-item">✓ Transferência imediata</span>
+                        <span class="detail-item">✓ Sem taxas</span>
+                        <span class="detail-item">✓ 24/7 disponível</span>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-icon">💵</div>
+                    <h3>Dinheiro</h3>
+                    <p>Pagamento em dinheiro na retirada ou entrega.</p>
+                    <div class="payment-details">
+                        <span class="detail-item">✓ Troco para R$ 50,00</span>
+                        <span class="detail-item">✓ Pagamento na entrega</span>
+                        <span class="detail-item">✓ Sem taxas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-info">
+                <div class="info-section">
+                    <h3>💳 Segurança e Privacidade</h3>
+                    <p>Todos os pagamentos são processados com criptografia SSL de 256 bits, garantindo a máxima segurança dos seus dados.</p>
+                </div>
+                <div class="info-section">
+                    <h3>📋 Termos e Condições</h3>
+                    <p>Os pagamentos são processados imediatamente após a confirmação do pedido. Em caso de cancelamento, o reembolso será efetuado na mesma forma de pagamento.</p>
+                </div>
+                <div class="info-section">
+                    <h3>❓ Dúvidas Frequentes</h3>
+                    <p>Para dúvidas sobre pagamentos, entre em contato conosco. Estamos sempre prontos para ajudar!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-cart">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0.00</span></strong>
+            </div>
+            <div class="payment-selection">
+                <h3>Forma de Pagamento</h3>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Crédito">
+                    <span class="payment-icon">💳</span> Crédito
+                </label>
+                <div id="credito-options" class="credito-options" style="display: none;">
+                    <label>
+                        <input type="radio" name="credito-type" value="À vista"> À vista
+                    </label>
+                    <label>
+                        <input type="radio" name="credito-type" value="Parcelado"> Parcelado
+                        <select name="installments" id="installments" disabled>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                            <option value="4">4x</option>
+                            <option value="5">5x</option>
+                            <option value="6">6x</option>
+                            <option value="7">7x</option>
+                            <option value="8">8x</option>
+                            <option value="9">9x</option>
+                            <option value="10">10x</option>
+                            <option value="11">11x</option>
+                            <option value="12">12x</option>
+                            <option value="13">13x</option>
+                            <option value="14">14x</option>
+                            <option value="15">15x</option>
+                            <option value="16">16x</option>
+                            <option value="17">17x</option>
+                            <option value="18">18x</option>
+                            <option value="19">19x</option>
+                            <option value="20">20x</option>
+                            <option value="21">21x</option>
+                            <option value="22">22x</option>
+                            <option value="23">23x</option>
+                            <option value="24">24x</option>
+                            <option value="25">25x</option>
+                            <option value="26">26x</option>
+                            <option value="27">27x</option>
+                            <option value="28">28x</option>
+                            <option value="29">29x</option>
+                            <option value="30">30x</option>
+                            <option value="31">31x</option>
+                            <option value="32">32x</option>
+                            <option value="33">33x</option>
+                            <option value="34">34x</option>
+                            <option value="35">35x</option>
+                            <option value="36">36x</option>
+                        </select>
+                    </label>
+                </div>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Débito">
+                    <span class="payment-icon">💳</span> Débito
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Pix">
+                    <span class="payment-icon">📱</span> Pix
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Dinheiro">
+                    <span class="payment-icon">💵</span> Dinheiro
+                </label>
+            </div>
+            <button class="btn" id="checkout-btn">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 CupCake Delícia. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
