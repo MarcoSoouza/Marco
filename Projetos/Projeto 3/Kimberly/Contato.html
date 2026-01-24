@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimberly Marketing - Contato</title>
+    <link rel="stylesheet" href="Contato.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>K. Estratégia Digital</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Entre em Contato</h1>
+            <p class="hero-subtitle">Pronto para criar campanhas incríveis? Vamos conversar sobre suas ideias e transformar sua visão em realidade.</p>
+        </div>
+        <div class="hero-3d">
+            <div class="floating-cubes">
+                <div class="cube cube1">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <div class="cube cube2">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <div class="cube cube3">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Informações de Contato</h2>
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div>
+                        <h3>E-mail</h3>
+                        <p>contato@kimberlymarketing.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📱</div>
+                    <div>
+                        <h3>Telefone</h3>
+                        <p>+55 (11) 99999-9999</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <h3>Endereço</h3>
+                        <p>São Paulo, SP - Brasil</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h2>Solicite uma Campanha</h2>
+                <form id="campaign-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Nome Completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Telefone">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="company" name="company" placeholder="Empresa">
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="">Selecione o Serviço</option>
+                            <option value="marketing-digital">Marketing Digital</option>
+                            <option value="publicidade">Publicidade Direcionada</option>
+                            <option value="analise-dados">Análise de Dados</option>
+                            <option value="design-criativo">Design Criativo</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Descreva sua ideia de campanha..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Solicitação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>Quanto tempo leva para criar uma campanha?</h3>
+                <p>O tempo varia dependendo da complexidade, mas geralmente levamos de 2 a 4 semanas para desenvolver e implementar uma campanha completa.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Quais são os custos envolvidos?</h3>
+                <p>Os custos dependem do escopo da campanha. Oferecemos orçamentos personalizados após entender suas necessidades específicas.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Vocês trabalham com empresas de todos os tamanhos?</h3>
+                <p>Sim! Atendemos desde startups até grandes corporações, adaptando nossas estratégias para cada perfil de cliente.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Kimberly Marketing. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 3D cube animations
+        const cubes = document.querySelectorAll('.cube');
+        cubes.forEach((cube, index) => {
+            let rotation = 0;
+            setInterval(() => {
+                rotation += 1 + index * 0.5;
+                cube.style.transform = `rotateX(${rotation}deg) rotateY(${rotation * 1.2}deg) translateZ(${Math.sin(rotation * 0.01) * 20}px)`;
+            }, 50);
+        });
+
+        // Form submission
+        document.getElementById('campaign-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado! Sua solicitação foi enviada. Entraremos em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
