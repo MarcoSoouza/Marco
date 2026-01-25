@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Eletrônicos - E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Loja de Eletrônicos</h1>
+        <nav>
+            <a href="#products">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a href="admin.html">Financeiro</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Produtos em Destaque</h2>
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be loaded dynamically from localStorage -->
+            </div>
+        </section>
+
+        <aside id="cart">
+            <h2>Carrinho de Compras</h2>
+            <div id="cart-items"></div>
+            <p>Total: R$ <span id="cart-total">0,00</span></p>
+            <button id="checkout-btn">Ir para Checkout</button>
+        </aside>
+
+        <section id="checkout" style="display: none;">
+            <h2>Checkout</h2>
+            <div id="delivery-section">
+                <h3>Informações de Entrega</h3>
+                <form id="delivery-form">
+                    <div class="cep-group">
+                        <div>
+                            <label for="cep">CEP:</label>
+                            <input type="text" id="cep" placeholder="00000-000" maxlength="9" required>
+                        </div>
+                        <button type="button" id="search-cep">Buscar CEP</button>
+                    </div>
+                    <div>
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" placeholder="Rua, bairro" required>
+                    </div>
+                    <div>
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" placeholder="123" required>
+                    </div>
+                    <div>
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" required>
+                    </div>
+                    <div>
+                        <label for="estado">Estado:</label>
+                        <input type="text" id="estado" required>
+                    </div>
+                    <button type="button" id="confirm-delivery">Confirmar Entrega</button>
+                </form>
+            </div>
+            <div id="payment-section" style="display: none;">
+                <h3>Pagamento</h3>
+                <form id="payment-form">
+                    <label for="payment-method">Método de Pagamento:</label>
+                    <select id="payment-method">
+                        <option value="credit">Cartão de Crédito</option>
+                        <option value="debit">Cartão de Débito</option>
+                        <option value="pix">Pix</option>
+                        <option value="cash">Dinheiro</option>
+                    </select>
+                    <div id="payment-details"></div>
+                    <button type="submit">Finalizar Compra</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Loja de Eletrônicos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
