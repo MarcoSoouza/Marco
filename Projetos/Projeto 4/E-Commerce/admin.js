@@ -60,6 +60,82 @@ function initializeDashboard() {
     initializeCharts();
 }
 
+// Update pending orders display
+function updatePendingOrders() {
+    const pendingOrdersList = document.getElementById('pending-orders-list');
+    const pendingSales = sales.filter(sale => sale.status === 'pending');
+
+    if (pendingSales.length === 0) {
+        pendingOrdersList.innerHTML = '<p>Nenhum pedido pendente de entrega.</p>';
+        return;
+    }
+
+    pendingOrdersList.innerHTML = '';
+
+    pendingSales.forEach(sale => {
+        const orderDiv = document.createElement('div');
+        orderDiv.className = 'pending-order-card';
+
+        const orderDate = new Date(sale.date);
+        const now = new Date();
+        const waitingTime = Math.floor((now - orderDate) / (1000 * 60 * 60 * 24)); // days
+
+        // Calculate delivery deadline (assuming 7 days from order)
+        const deliveryDeadline = new Date(orderDate);
+        deliveryDeadline.setDate(orderDate.getDate() + 7);
+
+        const daysUntilDeadline = Math.ceil((deliveryDeadline - now) / (1000 * 60 * 60 * 24));
+
+        let statusClass = 'on-time';
+        let statusText = 'No prazo';
+
+        if (daysUntilDeadline < 0) {
+            statusClass = 'overdue';
+            statusText = 'Atrasado';
+        } else if (daysUntilDeadline <= 2) {
+            statusClass = 'urgent';
+            statusText = 'Urgente';
+        }
+
+        orderDiv.innerHTML = `
+            <div class="order-header">
+                <h4>Pedido #${sale.id || 'N/A'}</h4>
+                <span class="order-status ${statusClass}">${statusText}</span>
+            </div>
+            <div class="order-details">
+                <p><strong>Data do Pedido:</strong> ${orderDate.toLocaleDateString('pt-BR')}</p>
+                <p><strong>Tempo de Espera:</strong> ${waitingTime} dia(s)</p>
+                <p><strong>Prazo de Entrega:</strong> ${deliveryDeadline.toLocaleDateString('pt-BR')} (${daysUntilDeadline > 0 ? daysUntilDeadline + ' dia(s)' : 'Atrasado'})</p>
+                <p><strong>Valor Total:</strong> R$ ${sale.totalAmount ? sale.totalAmount.toFixed(2).replace('.', ',') : sale.amount.toFixed(2).replace('.', ',')}</p>
+                <p><strong>Método de Pagamento:</strong> ${sale.paymentMethod}</p>
+                <div class="order-items">
+                    <strong>Itens:</strong>
+                    <ul>
+                        ${sale.items ? sale.items.map(item => `<li>${item.product} - ${item.quantity}x - R$ ${item.amount.toFixed(2).replace('.', ',')}</li>`).join('') : `<li>${sale.product} - ${sale.quantity}x - R$ ${sale.amount.toFixed(2).replace('.', ',')}</li>`}
+                    </ul>
+                </div>
+            </div>
+            <div class="order-actions">
+                <button class="mark-delivered-btn" onclick="markAsDelivered('${sale.id || sale.date}')">Marcar como Entregue</button>
+            </div>
+        `;
+
+        pendingOrdersList.appendChild(orderDiv);
+    });
+}
+
+// Mark order as delivered
+function markAsDelivered(orderId) {
+    const saleIndex = sales.findIndex(sale => (sale.id && sale.id.toString() === orderId) || sale.date === orderId);
+    if (saleIndex !== -1) {
+        sales[saleIndex].status = 'delivered';
+        localStorage.setItem('store_sales', JSON.stringify(sales));
+        updatePendingOrders();
+        updateSalesSummary();
+        alert('Pedido marcado como entregue!');
+    }
+}
+
 // Inventory management
 function updateInventoryTable() {
     const tbody = document.getElementById('inventory-body');
