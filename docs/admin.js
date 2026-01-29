@@ -47,25 +47,11 @@ async function loadData() {
     }
 }
 
-// Save data to server
-async function saveData() {
-    try {
-        await Promise.all([
-            fetch('/api/inventory', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(inventory)
-            }),
-            fetch('/api/sales', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(sales)
-            })
-        ]);
-        console.log('Data saved successfully');
-    } catch (error) {
-        console.error('Error saving data:', error);
-    }
+// Save data to localStorage (static version for GitHub Pages)
+function saveData() {
+    localStorage.setItem('admin_inventory', JSON.stringify(inventory));
+    localStorage.setItem('store_sales', JSON.stringify(sales));
+    console.log('Data saved successfully');
 }
 
 // Login functionality
