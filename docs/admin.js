@@ -508,6 +508,75 @@ function loadInventory() {
     }
 }
 
+// Contact messages management
+function updateContactMessages() {
+    const contactMessages = JSON.parse(localStorage.getItem('contact_messages')) || [];
+    const contactMessagesList = document.getElementById('contact-messages-list');
+
+    if (contactMessages.length === 0) {
+        contactMessagesList.innerHTML = '<p>Nenhuma mensagem de contato recebida.</p>';
+        return;
+    }
+
+    contactMessagesList.innerHTML = '';
+
+    contactMessages.forEach(message => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'contact-message-card';
+
+        const messageDate = new Date(message.date);
+        const statusClass = message.status === 'unread' ? 'unread' : 'read';
+
+        messageDiv.innerHTML = `
+            <div class="message-header">
+                <h4>${message.subject}</h4>
+                <span class="message-status ${statusClass}">${message.status === 'unread' ? 'Não lida' : 'Lida'}</span>
+            </div>
+            <div class="message-details">
+                <p><strong>De:</strong> ${message.name} (${message.email})</p>
+                <p><strong>Telefone:</strong> ${message.phone || 'Não informado'}</p>
+                <p><strong>Data:</strong> ${messageDate.toLocaleDateString('pt-BR')} às ${messageDate.toLocaleTimeString('pt-BR')}</p>
+                <div class="message-content">
+                    <strong>Mensagem:</strong><br>
+                    ${message.message}
+                </div>
+            </div>
+            <div class="message-actions">
+                <button class="mark-read-btn" onclick="markMessageAsRead('${message.id}')">Marcar como Lida</button>
+                <button class="delete-message-btn" onclick="deleteMessage('${message.id}')">Excluir</button>
+            </div>
+        `;
+
+        contactMessagesList.appendChild(messageDiv);
+    });
+}
+
+function markMessageAsRead(messageId) {
+    const contactMessages = JSON.parse(localStorage.getItem('contact_messages')) || [];
+    const messageIndex = contactMessages.findIndex(msg => msg.id === messageId);
+    if (messageIndex !== -1) {
+        contactMessages[messageIndex].status = 'read';
+        localStorage.setItem('contact_messages', JSON.stringify(contactMessages));
+        updateContactMessages();
+    }
+}
+
+function deleteMessage(messageId) {
+    const contactMessages = JSON.parse(localStorage.getItem('contact_messages')) || [];
+    const filteredMessages = contactMessages.filter(msg => msg.id !== messageId);
+    localStorage.setItem('contact_messages', JSON.stringify(filteredMessages));
+    updateContactMessages();
+}
+
+// Clear contact messages functionality
+document.getElementById('clear-contact-btn').addEventListener('click', function() {
+    if (confirm('Tem certeza que deseja limpar todas as mensagens de contato? Esta ação não pode ser desfeita.')) {
+        localStorage.removeItem('contact_messages');
+        updateContactMessages();
+        alert('Mensagens de contato limpas com sucesso.');
+    }
+});
+
 // Load data on page load
 loadData();
 
