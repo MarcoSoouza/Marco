@@ -4,15 +4,69 @@ const ADMIN_CREDENTIALS = {
     password: 'admin123'
 };
 
-// Load data from localStorage or use defaults
-let inventory = JSON.parse(localStorage.getItem('admin_inventory')) || [
-    { id: 1, name: 'Smart TV 55” TCL 55C6K 4K', stock: 5, price: 3900.00, cost: 3900.00, salesToday: 0, image: 'Imagem/Smart TV 55” TCL 55C6K 4K QD-Mini Led 144Hz Sistema Operacional Google TV.jpeg' },
-    { id: 2, name: 'Apple iPhone 16 (128 GB) – Preto', stock: 10, price: 5000.00, cost: 4000.00, salesToday: 0, image: 'Imagem/Apple-iPhone-17-Pro-color-lineup_.webp' },
-    { id: 3, name: 'Controle Sony DualSense PS5, Sem Fio, Branco', stock: 15, price: 350.00, cost: 250.00, salesToday: 0, image: 'Imagem/Controle Sony DualSense PS5, Sem Fio, Branco.webp' },
-    { id: 4, name: 'PlayStation 5 Edição Digital 825GB', stock: 10, price: 4500.00, cost: 4000.00, salesToday: 0, image: 'PS5.jfif' }
-];
+// Global variables for data
+let inventory = [];
+let sales = [];
 
-let sales = JSON.parse(localStorage.getItem('store_sales')) || [];
+// Load data from server
+async function loadData() {
+    try {
+        const [inventoryResponse, salesResponse] = await Promise.all([
+            fetch('/api/inventory'),
+            fetch('/api/sales')
+        ]);
+
+        if (inventoryResponse.ok) {
+            inventory = await inventoryResponse.json();
+        } else {
+            console.error('Failed to load inventory');
+            inventory = [
+                { id: 1, name: 'Smart TV 55” TCL 55C6K 4K', stock: 5, price: 3900.00, cost: 3900.00, salesToday: 0, image: 'Imagem/Smart TV 55” TCL 55C6K 4K QD-Mini Led 144Hz Sistema Operacional Google TV.jpeg' },
+                { id: 2, name: 'Apple iPhone 16 (128 GB) – Preto', stock: 10, price: 5000.00, cost: 4000.00, salesToday: 0, image: 'Imagem/Apple-iPhone-17-Pro-color-lineup_.webp' },
+                { id: 3, name: 'Controle Sony DualSense PS5, Sem Fio, Branco', stock: 15, price: 350.00, cost: 250.00, salesToday: 0, image: 'Imagem/Controle Sony DualSense PS5, Sem Fio, Branco.webp' },
+                { id: 4, name: 'PlayStation 5 Edição Digital 825GB', stock: 10, price: 4500.00, cost: 4000.00, salesToday: 0, image: 'PS5.jfif' }
+            ];
+        }
+
+        if (salesResponse.ok) {
+            sales = await salesResponse.json();
+        } else {
+            console.error('Failed to load sales');
+            sales = [];
+        }
+    } catch (error) {
+        console.error('Error loading data:', error);
+        // Fallback to default data
+        inventory = [
+            { id: 1, name: 'Smart TV 55” TCL 55C6K 4K', stock: 5, price: 3900.00, cost: 3900.00, salesToday: 0, image: 'Imagem/Smart TV 55” TCL 55C6K 4K QD-Mini Led 144Hz Sistema Operacional Google TV.jpeg' },
+            { id: 2, name: 'Apple iPhone 16 (128 GB) – Preto', stock: 10, price: 5000.00, cost: 4000.00, salesToday: 0, image: 'Imagem/Apple-iPhone-17-Pro-color-lineup_.webp' },
+            { id: 3, name: 'Controle Sony DualSense PS5, Sem Fio, Branco', stock: 15, price: 350.00, cost: 250.00, salesToday: 0, image: 'Imagem/Controle Sony DualSense PS5, Sem Fio, Branco.webp' },
+            { id: 4, name: 'PlayStation 5 Edição Digital 825GB', stock: 10, price: 4500.00, cost: 4000.00, salesToday: 0, image: 'PS5.jfif' }
+        ];
+        sales = [];
+    }
+}
+
+// Save data to server
+async function saveData() {
+    try {
+        await Promise.all([
+            fetch('/api/inventory', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(inventory)
+            }),
+            fetch('/api/sales', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(sales)
+            })
+        ]);
+        console.log('Data saved successfully');
+    } catch (error) {
+        console.error('Error saving data:', error);
+    }
+}
 
 // Login functionality
 document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -57,6 +111,7 @@ function initializeDashboard() {
     updateSalesSummary();
     updateSalesTable();
     updatePendingOrders();
+    updateContactMessages();
     initializeCharts();
 }
 
@@ -129,7 +184,7 @@ function markAsDelivered(orderId) {
     const saleIndex = sales.findIndex(sale => (sale.id && sale.id.toString() === orderId) || sale.date === orderId);
     if (saleIndex !== -1) {
         sales[saleIndex].status = 'delivered';
-        localStorage.setItem('store_sales', JSON.stringify(sales));
+        saveData();
         updatePendingOrders();
         updateSalesSummary();
         alert('Pedido marcado como entregue!');
@@ -167,7 +222,7 @@ function editProduct(id) {
         if (newStock !== null) {
             product.stock = parseInt(newStock);
             updateInventoryTable();
-            saveInventory();
+            saveData();
         }
     }
 }
@@ -176,7 +231,7 @@ function deleteProduct(id) {
     if (confirm('Tem certeza que deseja excluir este produto?')) {
         inventory = inventory.filter(p => p.id !== id);
         updateInventoryTable();
-        saveInventory();
+        saveData();
     }
 }
 
@@ -187,7 +242,7 @@ function editImage(id) {
         if (newImage !== null && newImage.trim() !== '') {
             product.image = newImage.trim();
             updateInventoryTable();
-            saveInventory();
+            saveData();
         }
     }
 }
@@ -235,7 +290,7 @@ document.getElementById('add-product-form').addEventListener('submit', function(
     }
 
     updateInventoryTable();
-    saveInventory();
+    saveData();
 
     // Reset form and close modal
     this.reset();
@@ -468,20 +523,20 @@ function loadInventory() {
 }
 
 // Load data on page load
-loadInventory();
+loadData();
 
 // Clear sales functionality
 document.getElementById('clear-sales-btn').addEventListener('click', function() {
     if (confirm('Tem certeza que deseja limpar todos os dados de vendas? Esta ação não pode ser desfeita.')) {
         // Clear sales data
         sales = [];
-        localStorage.setItem('store_sales', JSON.stringify(sales));
 
         // Reset salesToday for all inventory items
         inventory.forEach(item => {
             item.salesToday = 0;
         });
-        localStorage.setItem('admin_inventory', JSON.stringify(inventory));
+
+        saveData();
 
         // Update the dashboard
         updateInventoryTable();

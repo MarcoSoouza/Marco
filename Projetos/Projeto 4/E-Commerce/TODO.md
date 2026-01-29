@@ -20,3 +20,7 @@
 - [x] Enhance sales summary with profit information
 - [x] Update reports to include profit calculations
 - [x] Test profit calculations and admin panel functionality
+- [x] Create Node.js server for data persistence (server.js, package.json)
+- [x] Modify admin.js to save data to JSON files via server API
+- [x] Create PowerShell script for auto-commit and push to GitHub
+- [x] Implement automatic saving and GitHub sync for admin panel updates

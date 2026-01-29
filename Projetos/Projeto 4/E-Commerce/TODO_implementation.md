@@ -1,0 +1,3 @@
+- [x] Modify server.js to trigger PowerShell script after saving data
+- [ ] Test the functionality by making changes in the admin panel
+- [ ] Update TODO.md to mark the last item as completed
