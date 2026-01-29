@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Loja de Eletrônicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Loja de Eletrônicos</h1>
+        <nav>
+            <a href="index.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a href="admin.html">Financeiro</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact">
+            <h2>Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Fale Conosco</h3>
+                    <p>Estamos aqui para ajudar! Entre em contato conosco para dúvidas, sugestões ou suporte.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="icon">📧</span>
+                            <div>
+                                <strong>Email:</strong><br>
+                                contato@lojaeletronicos.com
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <strong>Telefone:</strong><br>
+                                (11) 9999-9999
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon">📍</span>
+                            <div>
+                                <strong>Endereço:</strong><br>
+                                Rua dos Eletrônicos, 123<br>
+                                São Paulo - SP
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="icon">🕒</span>
+                            <div>
+                                <strong>Horário de Funcionamento:</strong><br>
+                                Seg-Sex: 9h às 18h<br>
+                                Sáb: 9h às 13h
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envie sua Mensagem</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nome Completo:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone:</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Assunto:</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="duvida">Dúvida sobre produto</option>
+                                <option value="suporte">Suporte técnico</option>
+                                <option value="sugestao">Sugestão</option>
+                                <option value="reclamacao">Reclamação</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Loja de Eletrônicos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
