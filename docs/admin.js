@@ -8,41 +8,27 @@ const ADMIN_CREDENTIALS = {
 let inventory = [];
 let sales = [];
 
-// Load data from server
-async function loadData() {
-    try {
-        const [inventoryResponse, salesResponse] = await Promise.all([
-            fetch('/api/inventory'),
-            fetch('/api/sales')
-        ]);
+// Load data from localStorage (static version for GitHub Pages)
+function loadData() {
+    const savedInventory = localStorage.getItem('admin_inventory');
+    const savedSales = localStorage.getItem('store_sales');
 
-        if (inventoryResponse.ok) {
-            inventory = await inventoryResponse.json();
-        } else {
-            console.error('Failed to load inventory');
-            inventory = [
-                { id: 1, name: 'Smart TV 55” TCL 55C6K 4K', stock: 5, price: 3900.00, cost: 3900.00, salesToday: 0, image: 'Imagem/Smart TV 55” TCL 55C6K 4K QD-Mini Led 144Hz Sistema Operacional Google TV.jpeg' },
-                { id: 2, name: 'Apple iPhone 16 (128 GB) – Preto', stock: 10, price: 5000.00, cost: 4000.00, salesToday: 0, image: 'Imagem/Apple-iPhone-17-Pro-color-lineup_.webp' },
-                { id: 3, name: 'Controle Sony DualSense PS5, Sem Fio, Branco', stock: 15, price: 350.00, cost: 250.00, salesToday: 0, image: 'Imagem/Controle Sony DualSense PS5, Sem Fio, Branco.webp' },
-                { id: 4, name: 'PlayStation 5 Edição Digital 825GB', stock: 10, price: 4500.00, cost: 4000.00, salesToday: 0, image: 'PS5.jfif' }
-            ];
-        }
-
-        if (salesResponse.ok) {
-            sales = await salesResponse.json();
-        } else {
-            console.error('Failed to load sales');
-            sales = [];
-        }
-    } catch (error) {
-        console.error('Error loading data:', error);
-        // Fallback to default data
+    if (savedInventory) {
+        inventory = JSON.parse(savedInventory);
+    } else {
+        // Default data if nothing saved
         inventory = [
             { id: 1, name: 'Smart TV 55” TCL 55C6K 4K', stock: 5, price: 3900.00, cost: 3900.00, salesToday: 0, image: 'Imagem/Smart TV 55” TCL 55C6K 4K QD-Mini Led 144Hz Sistema Operacional Google TV.jpeg' },
             { id: 2, name: 'Apple iPhone 16 (128 GB) – Preto', stock: 10, price: 5000.00, cost: 4000.00, salesToday: 0, image: 'Imagem/Apple-iPhone-17-Pro-color-lineup_.webp' },
             { id: 3, name: 'Controle Sony DualSense PS5, Sem Fio, Branco', stock: 15, price: 350.00, cost: 250.00, salesToday: 0, image: 'Imagem/Controle Sony DualSense PS5, Sem Fio, Branco.webp' },
             { id: 4, name: 'PlayStation 5 Edição Digital 825GB', stock: 10, price: 4500.00, cost: 4000.00, salesToday: 0, image: 'PS5.jfif' }
         ];
+        saveData(); // Save defaults immediately
+    }
+
+    if (savedSales) {
+        sales = JSON.parse(savedSales);
+    } else {
         sales = [];
     }
 }
