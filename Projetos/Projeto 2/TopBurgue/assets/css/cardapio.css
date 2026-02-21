@@ -1,0 +1,357 @@
+/* ========================================
+   TopBurgue - Cardápio Page Styles
+   Dark Professional Theme
+   ======================================== */
+
+/* Page Background */
+body {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+/* Menu Header */
+.menu-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,107,53,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,107,53,0.1)"/><circle cx="50" cy="50" r="0.5" fill="rgba(255,107,53,0.05)"/></svg>') repeat;
+}
+
+.menu-header h1 {
+    color: #ff6b35;
+    font-size: 3rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-header .lead {
+    color: #a0aec0;
+    font-size: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Titles */
+.section-title {
+    color: #ff6b35;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b35, #f7931e);
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+.section-title i {
+    color: #f7931e;
+}
+
+/* Menu Item Card */
+.menu-item {
+    background: linear-gradient(145deg, #1e1e32 0%, #252545 100%);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+.menu-item-image {
+    position: relative;
+    overflow: hidden;
+    height: 180px;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.menu-item:hover .menu-item-image img {
+    transform: scale(1.1);
+}
+
+.menu-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+}
+
+.menu-badge.bg-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.menu-badge.bg-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.menu-badge.bg-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.menu-item .card-body {
+    padding: 1.25rem;
+}
+
+.menu-item .card-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item .card-text {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.menu-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-item .price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ff6b35;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+.menu-item .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* Cart Section */
+.cart-section {
+    margin-top: 3rem;
+}
+
+.cart-section .card {
+    background: linear-gradient(145deg, #1e1e32 0%, #252545 100%);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cart-section .card-header {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border: none;
+    padding: 1.5rem;
+}
+
+.cart-section .card-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.cart-container {
+    min-height: 200px;
+}
+
+.cart-section .list-group-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.cart-section .list-group-item:hover {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+.cart-section .list-group-item .btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+}
+
+.cart-section .list-group-item .btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.total-display {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1)) !important;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.total-display h4 {
+    color: #ff6b35;
+    font-size: 1.5rem;
+}
+
+/* Order Form */
+.order-form .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.order-form .form-control:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+    color: #ffffff;
+}
+
+.order-form .form-control::placeholder {
+    color: #6b7280;
+}
+
+.order-form .form-label {
+    color: #a0aec0;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.order-form .btn-success {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.order-form .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* Form focus states */
+.form-control:focus {
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .menu-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .menu-item-image {
+        height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-header {
+        padding: 3rem 0;
+    }
+    
+    .menu-header h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .menu-item-image {
+        height: 150px;
+    }
+    
+    .menu-item-footer {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    
+    .menu-item .price {
+        text-align: center;
+    }
+    
+    .menu-item .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .menu-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .menu-header .lead {
+        font-size: 1rem;
+    }
+    
+    .menu-item-image {
+        height: 140px;
+    }
+    
+    .cart-section .card-header h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff6b35, #f7931e);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e55a2b, #e88a1e);
+}

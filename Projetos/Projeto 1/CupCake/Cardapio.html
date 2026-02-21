@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - CupCake Delícia | Confeitaria Artesanal Premium</title>
+    <meta name="description" content="Explore nosso cardápio de cupcakes artesanais premium. Clássicos, chocolates, frutas, premium e sazonais. Encomendas personalizadas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Cardapio.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-icon">🧁</span>
+                    <h1>CupCake Delícia</h1>
+                </a>
+            </div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Cardapio.html" class="active">Cardápio</a></li>
+                    <li><a href="Sobre.html">Sobre</a></li>
+                    <li><a href="Contato.html">Contato</a></li>
+                    <li><a href="Pagamentos.html">Pagamentos</a></li>
+                </ul>
+                <div class="cart-icon" id="cart-icon">
+                    <span class="cart-count" id="cart-count">0</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="menu-hero" class="menu-hero">
+        <div class="hero-overlay">
+            <span class="hero-badge">Cardápio Premium</span>
+            <h2>Nossas Criações Artesanais</h2>
+            <p>Descubra cupcakes únicos feitos com ingredientes selecionados e muito carinho</p>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="menu-intro">
+                <h2>Escolha Seu Favorito</h2>
+                <p>Cada cupcake é uma obra de arte culinária, preparada com dedicação e ingredientes premium</p>
+            </div>
+
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <span class="filter-icon">🍰</span>
+                    Todos
+                </button>
+                <button class="filter-btn" data-filter="classicos">
+                    <span class="filter-icon">⭐</span>
+                    Clássicos
+                </button>
+                <button class="filter-btn" data-filter="chocolate">
+                    <span class="filter-icon">🍫</span>
+                    Chocolate
+                </button>
+                <button class="filter-btn" data-filter="frutas">
+                    <span class="filter-icon">🍓</span>
+                    Frutas
+                </button>
+                <button class="filter-btn" data-filter="premium">
+                    <span class="filter-icon">💎</span>
+                    Premium
+                </button>
+                <button class="filter-btn" data-filter="sazonais">
+                    <span class="filter-icon">🌸</span>
+                    Sazonais
+                </button>
+            </div>
+
+            <div class="menu-sections">
+                <div class="menu-section">
+                    <h3 class="section-title">🍰 Clássicos</h3>
+                    <div class="menu-items">
+                        <!-- Item 1 -->
+                        <div class="menu-item" data-category="classicos">
+                            <span class="item-badge badge-bestseller">Mais Vendido</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-1.jpg" alt="Cupcake de Baunilha" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 15 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Baunilha</h3>
+                                <p>Massa leve e cobertura cremosa de baunilha. Perfeito para qualquer ocasião.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Farinha, ovos, baunilha, manteiga</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Baunilha">Baunilha</option>
+                                            <option value="Chocolate">Chocolate</option>
+                                            <option value="Morango">Morango</option>
+                                            <option value="Limão">Limão</option>
+                                            <option value="Maracujá">Maracujá</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 7,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="menu-item" data-category="classicos">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-2.jpg" alt="Cupcake de Chocolate" onerror="this.src='https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 15 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Chocolate</h3>
+                                <p>Chocolate belga premium com cobertura rica e cremosa.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Cacau, farinha, ovos, chocolate belga</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, soja</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Chocolate">Chocolate</option>
+                                            <option value="Chocolate Branco">Chocolate Branco</option>
+                                            <option value="Meio Amargo">Meio Amargo</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 8,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="menu-item" data-category="classicos">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-3.jpg" alt="Cupcake de Cenoura" onerror="this.src='https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 20 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Cenoura</h3>
+                                <p>Versão saudável do clássico, com cream cheese frosting.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Cenoura, nozes, cream cheese, canela</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, nozes</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Com Nozes">Com Nozes</option>
+                                            <option value="Sem Nozes">Sem Nozes</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 9,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <h3 class="section-title">🍫 Chocolate</h3>
+                    <div class="menu-items">
+                        <!-- Item 4 -->
+                        <div class="menu-item" data-category="chocolate">
+                            <span class="item-badge badge-new">Novo</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-4.jpg" alt="Cupcake Nutella" onerror="this.src='https://images.unsplash.com/photo-1607478900766-efe13248b125?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 18 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake Nutella</h3>
+                                <p>Recheado com Nutella original e cobertura de chocolate.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Nutella, chocolate, farinha, ovos</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, nozes, soja</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Nutella">Nutella</option>
+                                            <option value="Nutella + Avelã">Nutella + Avelã</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 11,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="menu-item" data-category="chocolate">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-5.jpg" alt="Cupcake M&M's" onerror="this.src='https://images.unsplash.com/photo-1550617931-e17a7b70dce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 16 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake M&M's</h3>
+                                <p>Massa de chocolate com M&M's crocantes por dentro e por fora.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Chocolate, M&M's, farinha, ovos</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, soja</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="M&M's Original">M&M's Original</option>
+                                            <option value="M&M's Peanut">M&M's Peanut</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 10,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="menu-item" data-category="chocolate">
+                            <span class="item-badge badge-bestseller">Mais Vendido</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-6.jpg" alt="Cupcake de Chocolate Belga" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 18 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake Chocolate Belga</h3>
+                                <p>Feito com chocolate belga de alta qualidade. Uma experiência única!</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Chocolate belga 70%, cacau, farinha, ovos</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, soja</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="70% Cacau">70% Cacau</option>
+                                            <option value="85% Cacau">85% Cacau</option>
+                                            <option value="100% Cacau">100% Cacau</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 12,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <h3 class="section-title">🍓 Frutas</h3>
+                    <div class="menu-items">
+                        <!-- Item 7 -->
+                        <div class="menu-item" data-category="frutas">
+                            <span class="item-badge badge-new">Novo</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-1.jpg" alt="Cupcake de Morango" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 17 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Morango</h3>
+                                <p>Morangos frescos com cobertura de cream cheese.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Morangos frescos, cream cheese, farinha</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Morango">Morango</option>
+                                            <option value="Morango + Chantilly">Morango + Chantilly</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 9,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8 -->
+                        <div class="menu-item" data-category="frutas">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-2.jpg" alt="Cupcake de Limão" onerror="this.src='https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 15 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Limão</h3>
+                                <p>Refrescante com limão siciliano e frosting cítrico.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Limão siciliano, farinha, ovos, manteiga</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Limão Siciliano">Limão Siciliano</option>
+                                            <option value="Limão Tahitian">Limão Tahitian</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 8,50</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 9 -->
+                        <div class="menu-item" data-category="frutas">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-3.jpg" alt="Cupcake de Maracujá" onerror="this.src='https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 18 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Maracujá</h3>
+                                <p>Sabor tropical com polpa fresca de maracujá.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Maracujá fresco, farinha, ovos, leite</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Maracujá">Maracujá</option>
+                                            <option value="Maracujá + Chocolate">Maracujá + Chocolate</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 9,50</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <h3 class="section-title">💎 Premium</h3>
+                    <div class="menu-items">
+                        <!-- Item 10 -->
+                        <div class="menu-item" data-category="premium">
+                            <span class="item-badge badge-bestseller">Mais Vendido</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-4.jpg" alt="Cupcake Red Velvet" onerror="this.src='https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 22 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake Red Velvet</h3>
+                                <p>Sabor único com cream cheese frosting artesanal.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Cacau vermelho, cream cheese, farinha especial</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Classic Red Velvet">Classic Red Velvet</option>
+                                            <option value="Red Velvet + Chocolate">Red Velvet + Chocolate</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 12,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 11 -->
+                        <div class="menu-item" data-category="premium">
+                            <span class="item-badge badge-new">Novo</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-5.jpg" alt="Cupcake Tiramisu" onerror="this.src='https://images.unsplash.com/photo-1550617931-e17a7b70dce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 25 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake Tiramisu</h3>
+                                <p>Inspiração italiana com café, mascarpone e cacau.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Café espresso, mascarpone, cacau, biscoitos</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, soja</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Classic Tiramisu">Classic Tiramisu</option>
+                                            <option value="Tiramisu + Licor">Tiramisu + Licor</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 14,00</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 12 -->
+                        <div class="menu-item" data-category="premium">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-6.jpg" alt="Cupcake Oreo" onerror="this.src='https://images.unsplash.com/photo-1607478900766-efe13248b125?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 20 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake Oreo</h3>
+                                <p>Biscoito Oreo triturado na massa e na cobertura.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Oreo, chocolate, cream cheese, farinha</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, soja</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Oreo Classic">Oreo Classic</option>
+                                            <option value="Oreo Double">Oreo Double</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 11,50</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <h3 class="section-title">🌸 Sazonais</h3>
+                    <div class="menu-items">
+                        <!-- Item 13 -->
+                        <div class="menu-item" data-category="sazonais">
+                            <span class="item-badge badge-new">Temporário</span>
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-1.jpg" alt="Cupcake de Abóbora" onerror="this.src='https://images.unsplash.com/photo-1607478900766-efe13248b125?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 20 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Abóbora</h3>
+                                <p>Sabor outonal com especiarias e cobertura de cream cheese.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Abóbora, canela, cream cheese, nozes</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, nozes</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Com Nozes">Com Nozes</option>
+                                            <option value="Sem Nozes">Sem Nozes</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 10,50</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 14 -->
+                        <div class="menu-item" data-category="sazonais">
+                            <div class="menu-item-image">
+                                <img src="images/cupcake-2.jpg" alt="Cupcake de Cereja" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                                <div class="menu-item-overlay">
+                                    <span class="prep-time">⏱️ 19 min</span>
+                                </div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3>Cupcake de Cereja</h3>
+                                <p>Cerejas frescas com toque de amêndoa.</p>
+                                <div class="menu-item-details">
+                                    <span class="ingredients">Ingredientes: Cerejas frescas, amêndoa, farinha, ovos</span>
+                                    <span class="allergens">Contém: Glúten, ovos, leite, nozes</span>
+                                </div>
+                                <div class="menu-item-footer">
+                                    <div class="flavor-selection">
+                                        <select class="flavor-select">
+                                            <option value="Cereja">Cereja</option>
+                                            <option value="Cereja + Amêndoa">Cereja + Amêndoa</option>
+                                        </select>
+                                    </div>
+                                    <div class="price-and-button">
+                                        <span class="price">R$ 11,50</span>
+                                        <button class="add-to-cart">Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-cart">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0.00</span></strong>
+            </div>
+            <div class="payment-selection">
+                <h3>Forma de Pagamento</h3>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Crédito">
+                    <span class="payment-icon">💳</span> Crédito
+                </label>
+                <div id="credito-options" class="credito-options">
+                    <label>
+                        <input type="radio" name="credito-type" value="À vista"> À vista
+                    </label>
+                    <label>
+                        <input type="radio" name="credito-type" value="Parcelado"> Parcelado
+                        <select name="installments" id="installments" disabled>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                            <option value="4">4x</option>
+                            <option value="5">5x</option>
+                            <option value="6">6x</option>
+                            <option value="7">7x</option>
+                            <option value="8">8x</option>
+                            <option value="9">9x</option>
+                            <option value="10">10x</option>
+                            <option value="11">11x</option>
+                            <option value="12">12x</option>
+                        </select>
+                    </label>
+                </div>
+                <!-- Card Form -->
+                <div id="card-form" class="card-form">
+                    <h4>Informações do Cartão</h4>
+                    <div class="card-input-group">
+                        <label for="card-holder">Nome do Titular</label>
+                        <input type="text" id="card-holder" name="card-holder" placeholder="Nome como está no cartão" required>
+                    </div>
+                    <div class="card-input-group">
+                        <label for="card-number">Número do Cartão</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                    </div>
+                    <div class="card-input-row">
+                        <div class="card-input-group">
+                            <label for="card-expiry">Validade</label>
+                            <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                        </div>
+                        <div class="card-input-group">
+                            <label for="card-cvv">CVV</label>
+                            <input type="text" id="card-cvv" name="card-cvv" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+                </div>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Débito">
+                    <span class="payment-icon">💳</span> Débito
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Pix">
+                    <span class="payment-icon">📱</span> Pix
+                </label>
+                <div id="pix-qrcode" class="pix-qrcode">
+                    <h4>Escaneie o QR Code</h4>
+                    <p>Use o app do seu banco para pagar</p>
+                    <img id="qrcode-image" src="" alt="QR Code Pix">
+                    <p class="pix-key">Chave Pix: cupcake@delicia.com</p>
+                </div>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Dinheiro">
+                    <span class="payment-icon">💵</span> Dinheiro
+                </label>
+            </div>
+            <button class="btn" id="checkout-btn">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CupCake Delícia. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+    "name": "CupCake Delícia",
+    "short_name": "CupCake",
+    "description": "Loja de cupcakes artesanais deliciosos",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#e91e63",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["food", "shopping"],
+    "lang": "pt-BR"
+}

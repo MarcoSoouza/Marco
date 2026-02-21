@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - CupCake Delícia | Confeitaria Artesanal Premium</title>
+    <meta name="description" content="Entre em contato com a CupCake Delícia. Tire suas dúvidas, faça orçamentos e encomendas personalizadas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Contato.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-icon">🧁</span>
+                    <h1>CupCake Delícia</h1>
+                </a>
+            </div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Cardapio.html">Cardápio</a></li>
+                    <li><a href="Sobre.html">Sobre</a></li>
+                    <li><a href="Contato.html" class="active">Contato</a></li>
+                    <li><a href="Pagamentos.html">Pagamentos</a></li>
+                </ul>
+                <div class="cart-icon" id="cart-icon">
+                    <span class="cart-count" id="cart-count">0</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="contact" class="contact">
+        <div class="contact-hero">
+            <div class="contact-hero-content">
+                <span class="hero-badge">Fale Conosco</span>
+                <h2>Estamos Aqui para Você</h2>
+                <p>Tire suas dúvidas, faça orçamentos ou simplesmente deixe sua mensagem. Nossa equipe está pronta para atender você!</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="contact-content">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <!-- Endereço -->
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h3>Endereço</h3>
+                            <p>Rua dos Cupcakes, 123<br>Bairro Jardim América<br>São Paulo, SP - 01234-567</p>
+                        </div>
+                    </div>
+
+                    <!-- Telefone -->
+                    <div class="info-card">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h3>Telefone</h3>
+                            <p><a href="tel:+5511999999999">(11) 99999-9999</a></p>
+                            <p><a href="tel:+551133334444">(11) 3333-4444</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="info-card">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:contato@cupcakedelicia.com">contato@cupcakedelicia.com</a></p>
+                            <p><a href="mailto:encomendas@cupcakedelicia.com">encomendas@cupcakedelicia.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Horário -->
+                    <div class="info-card">
+                        <div class="info-icon">🕒</div>
+                        <div class="info-content">
+                            <h3>Horário de Funcionamento</h3>
+                            <p>Segunda a Sexta: 8h às 18h</p>
+                            <p>Sábado: 9h às 16h</p>
+                            <p>Domingo: Fechado</p>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociais -->
+                    <div class="social-card">
+                        <h3>🌐 Siga-nos nas Redes Sociais</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="Instagram">📸</a>
+                            <a href="#" class="social-link" title="Facebook">📘</a>
+                            <a href="#" class="social-link" title="WhatsApp">💬</a>
+                            <a href="#" class="social-link" title="TikTok">🎵</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h3>💌 Envie uma Mensagem</h3>
+                    <p>Preencha o formulário abaixo e responderemos em breve!</p>
+                    
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo *</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone *</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="assunto">Assunto</label>
+                                <select id="assunto" name="assunto">
+                                    <option value="">Selecione um assunto</option>
+                                    <option value="encomenda">Encomenda / Pedido</option>
+                                    <option value="orçamento">Orçamento</option>
+                                    <option value="duvida">Dúvida</option>
+                                    <option value="sugestao">Sugestão</option>
+                                    <option value="reclamacao">Reclamação</option>
+                                    <option value="elogio">Elogio</option>
+                                    <option value="parceria">Parceria</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">
+                            <span>📨</span> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-cart">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cart-total">0.00</span></strong>
+            </div>
+            <div class="payment-selection">
+                <h3>Forma de Pagamento</h3>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Crédito">
+                    <span class="payment-icon">💳</span> Crédito
+                </label>
+                <div id="credito-options" class="credito-options">
+                    <label>
+                        <input type="radio" name="credito-type" value="À vista"> À vista
+                    </label>
+                    <label>
+                        <input type="radio" name="credito-type" value="Parcelado"> Parcelado
+                        <select name="installments" id="installments" disabled>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                            <option value="4">4x</option>
+                            <option value="5">5x</option>
+                            <option value="6">6x</option>
+                            <option value="7">7x</option>
+                            <option value="8">8x</option>
+                            <option value="9">9x</option>
+                            <option value="10">10x</option>
+                            <option value="11">11x</option>
+                            <option value="12">12x</option>
+                        </select>
+                    </label>
+                </div>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Débito">
+                    <span class="payment-icon">💳</span> Débito
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Pix">
+                    <span class="payment-icon">📱</span> Pix
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment-method" value="Dinheiro">
+                    <span class="payment-icon">💵</span> Dinheiro
+                </label>
+            </div>
+            <button class="btn" id="checkout-btn">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CupCake Delícia. Todos os direitos reservados. 🧁</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cardápio TopBurgue - Os melhores hambúrgueres, acompanhamentos e bebidas">
+    <title>TopBurgue - Cardápio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="assets/css/cardapio.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-hamburger me-2"></i>TopBurgue
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cardapio.html">
+                            <i class="fas fa-utensils me-1"></i>Cardápio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">
+                            <i class="fas fa-envelope me-1"></i>Contato
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="financeiro.html">
+                            <i class="fas fa-chart-line me-1"></i>Financeiro
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="menu-header">
+        <div class="container text-center">
+            <h1 class="animate-fadeInUp"><i class="fas fa-utensils me-2"></i>Cardápio</h1>
+            <p class="lead animate-fadeInUp delay-1">Escolha seus favoritos e faça seu pedido!</p>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <!-- Hambúrgueres Section -->
+        <section class="menu-section mb-5">
+            <h2 class="section-title text-center mb-4">
+                <i class="fas fa-hamburger me-2"></i>Hambúrgueres
+            </h2>
+            <div class="row justify-content-center">
+                <!-- Clássico -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Hamburguer Clássico.jpg" class="card-img-top" alt="Hambúrguer Clássico">
+                            <span class="menu-badge">Mais Vendido</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Clássico</h5>
+                            <p class="card-text">Pão brioche, hambúrguer 180g, queijo cheddar, alface crocante, tomate fresco e molho especial.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 18,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Clássico" data-price="18.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bacon -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-1">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Hambuguer Bacon.webp" class="card-img-top" alt="Hambúrguer Bacon">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Bacon</h5>
+                            <p class="card-text">Pão brioche, hambúrguer 180g, queijo cheddar, bacon crocante, alface, tomate e molho barbecue.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 22,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Bacon" data-price="22.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Duplo -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-2">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Duplo Burgue.jfif" class="card-img-top" alt="Hambúrguer Duplo">
+                            <span class="menu-badge bg-warning">Grande</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Duplo</h5>
+                            <p class="card-text">Pão brioche, dois hambúrgueres 180g, queijo duplo, alface, tomate, cebola caramelizada e molho especial.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 28,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Duplo" data-price="28.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vegetariano -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-3">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Hambuguer VG.webp" class="card-img-top" alt="Hambúrguer Vegetariano">
+                            <span class="menu-badge bg-success">Vegano</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Vegetariano</h5>
+                            <p class="card-text">Pão integral, hambúrguer de grão-de-bico, queijo vegano, alface, tomate, cebola roxa e molho pesto.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 20,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Vegetariano" data-price="20.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acompanhamentos Section -->
+        <section class="menu-section mb-5">
+            <h2 class="section-title text-center mb-4">
+                <i class="fas fa-french-fries me-2"></i>Acompanhamentos
+            </h2>
+            <div class="row justify-content-center">
+                <!-- Batata Frita -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Batata-frita.jpg" class="card-img-top" alt="Batata Frita">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Batata Frita</h5>
+                            <p class="card-text">Porção grande de batatas fritas crocantes, saladas e temperadas.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 10,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Batata Frita" data-price="10.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Onion Rings -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-1">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Onion Rings.jpg" class="card-img-top" alt="Onion Rings">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Onion Rings</h5>
+                            <p class="card-text">Anéis de cebola empanados e fritos, servidos com molho ranch.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 12,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Onion Rings" data-price="12.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nuggets -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-2">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Nuggets.jfif" class="card-img-top" alt="Nuggets">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Nuggets</h5>
+                            <p class="card-text">10 unidades de nuggets de frango empanados, com molho de sua escolha.</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 14,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Nuggets" data-price="14.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bebidas Section -->
+        <section class="menu-section mb-5">
+            <h2 class="section-title text-center mb-4">
+                <i class="fas fa-glass-cheers me-2"></i>Bebidas
+            </h2>
+            <div class="row justify-content-center">
+                <!-- Refrigerante -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Refrigerante.webp" class="card-img-top" alt="Refrigerante">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Refrigerante</h5>
+                            <p class="card-text">Lata de 350ml (Coca-Cola, Pepsi, Sprite, Fanta).</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 6,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Refrigerante" data-price="6.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Suco -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-1">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Suco.jpg" class="card-img-top" alt="Suco Natural">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Suco Natural</h5>
+                            <p class="card-text">Copo de 300ml (Laranja, Limão, Maracujá).</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 8,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Suco Natural" data-price="8.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cerveja -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="menu-item card h-100 animate-fadeInUp delay-2">
+                        <div class="menu-item-image">
+                            <img src="Imagem/Cerveja.webp" class="card-img-top" alt="Cerveja">
+                            <span class="menu-badge bg-danger">18+</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Cerveja</h5>
+                            <p class="card-text">Garrafa de 330ml (Heineken, Brahma, Skol).</p>
+                            <div class="menu-item-footer">
+                                <span class="price">R$ 10,00</span>
+                                <button class="btn btn-primary btn-sm add-to-cart" data-item="Cerveja" data-price="10.00">
+                                    <i class="fas fa-cart-plus me-1"></i>Adicionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shopping Cart Section -->
+        <section class="cart-section mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg animate-fadeInUp">
+                        <div class="card-header bg-primary text-white text-center py-4">
+                            <h2 class="mb-0">
+                                <i class="fas fa-shopping-cart me-2"></i>Seu Pedido
+                            </h2>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <!-- Cart Items -->
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                    <h5 class="text-muted mb-3">
+                                        <i class="fas fa-list me-2"></i>Itens Selecionados
+                                    </h5>
+                                    <div class="cart-container">
+                                        <ul id="cart" class="list-group mb-3">
+                                            <li class="list-group-item text-muted text-center py-4">
+                                                <i class="fas fa-shopping-basket fa-2x mb-2 d-block"></i>
+                                                Seu carrinho está vazio
+                                            </li>
+                                        </ul>
+                                        <div class="total-display bg-light p-4 rounded text-center">
+                                            <h4 class="mb-0 text-primary">
+                                                Total: <span id="total" class="fw-bold">R$ 0,00</span>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Order Form -->
+                                <div class="col-lg-6">
+                                    <h5 class="text-muted mb-3">
+                                        <i class="fas fa-user me-2"></i>Informações para Entrega
+                                    </h5>
+                                    <form id="orderForm" class="order-form">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">
+                                                <i class="fas fa-user me-2"></i>Nome Completo
+                                            </label>
+                                            <input type="text" class="form-control form-control-lg" id="name" 
+                                                   placeholder="Digite seu nome completo" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">
+                                                <i class="fas fa-phone me-2"></i>Telefone
+                                            </label>
+                                            <input type="tel" class="form-control form-control-lg" id="phone" 
+                                                   placeholder="(11) 99999-9999" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="address" class="form-label">
+                                                <i class="fas fa-map-marker-alt me-2"></i>Endereço Completo
+                                            </label>
+                                            <textarea class="form-control form-control-lg" id="address" rows="3" 
+                                                      placeholder="Rua, número, bairro, cidade - CEP" required></textarea>
+                                        </div>
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-success btn-lg">
+                                                <i class="fas fa-paper-plane me-2"></i>Fazer Pedido
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5><i class="fas fa-hamburger me-2"></i>TopBurgue</h5>
+                    <p class="mb-0">Os melhores hambúrgueres da cidade, feitos com ingredientes frescos e muito amor.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Links Rápidos</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="index.html" class="text-white-50">Home</a></li>
+                        <li><a href="cardapio.html" class="text-white-50">Cardápio</a></li>
+                        <li><a href="contato.html" class="text-white-50">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Siga-nos</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white-50"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 TopBurgue. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

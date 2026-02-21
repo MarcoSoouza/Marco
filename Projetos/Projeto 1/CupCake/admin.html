@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - CupCake Delícia</title>
+    <meta name="description" content="Painel administrativo para gestão de pedidos, finanças e estoque">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <span class="logo-icon">🧁</span>
+                <h1>CupCake Delícia</h1>
+                <h2>Painel Administrativo</h2>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" placeholder="Digite seu usuário" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+            <p class="login-note">⚠️ Acesso restrito à equipe financeira</p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">🧁</span>
+                <h2>CupCake Admin</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="pedidos">
+                    <span class="nav-icon">📋</span>
+                    <span>Pedidos</span>
+                </a>
+                <a href="#" class="nav-item" data-section="financeiro">
+                    <span class="nav-icon">💰</span>
+                    <span>Financeiro</span>
+                </a>
+                <a href="#" class="nav-item" data-section="estoque">
+                    <span class="nav-icon">📦</span>
+                    <span>Estoque</span>
+                </a>
+                <a href="#" class="nav-item" data-section="relatorios">
+                    <span class="nav-icon">📊</span>
+                    <span>Relatórios</span>
+                </a>
+                <a href="#" class="nav-item" id="logout-btn">
+                    <span class="nav-icon">🚪</span>
+                    <span>Sair</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1 id="page-title">Pedidos</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-info">👤 Administrador</span>
+                    <span class="date-info" id="current-date"></span>
+                </div>
+            </header>
+
+            <!-- Orders Section -->
+            <section id="pedidos-section" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🆕</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="novos-pedidos">5</span>
+                            <span class="stat-label">Novos Pedidos</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="em-producao">3</span>
+                            <span class="stat-label">Em Produção</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="entregues-hoje">8</span>
+                            <span class="stat-label">Entregues Hoje</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="faturamento-dia">R$ 1.250</span>
+                            <span class="stat-label">Faturamento do Dia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Lista de Pedidos</h3>
+                        <div class="table-filters">
+                            <select id="status-filter">
+                                <option value="todos">Todos os Status</option>
+                                <option value="novo">Novo</option>
+                                <option value="producao">Em Produção</option>
+                                <option value="pronto">Pronto</option>
+                                <option value="entregue">Entregue</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                            <input type="date" id="date-filter">
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Itens</th>
+                                <th>Total</th>
+                                <th>Forma Pgto</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Orders will be populated by JavaScript -->
+                            <tr>
+                                <td>#001</td>
+                                <td>Maria Santos</td>
+                                <td>2x Cupcake Baunilha, 1x Chocolate</td>
+                                <td>R$ 22,00</td>
+                                <td>PIX</td>
+                                <td><span class="status-badge novo">Novo</span></td>
+                                <td>15/01/2025</td>
+                                <td>
+                                    <button class="btn-action" onclick="alterarStatus(1)">✓</button>
+                                    <button class="btn-action danger" onclick="cancelarPedido(1)">✗</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#002</td>
+                                <td>João Silva</td>
+                                <td>3x Red Velvet, 2x Nutella</td>
+                                <td>R$ 57,00</td>
+                                <td>Crédito (3x)</td>
+                                <td><span class="status-badge producao">Em Produção</span></td>
+                                <td>15/01/2025</td>
+                                <td>
+                                    <button class="btn-action" onclick="alterarStatus(2)">✓</button>
+                                    <button class="btn-action danger" onclick="cancelarPedido(2)">✗</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#003</td>
+                                <td>Ana Paula</td>
+                                <td>5x Morango, 2x Limão</td>
+                                <td>R$ 59,50</td>
+                                <td>Débito</td>
+                                <td><span class="status-badge entregue">Entregue</span></td>
+                                <td>15/01/2025</td>
+                                <td>
+                                    <button class="btn-action" disabled>✓</button>
+                                    <button class="btn-action danger" disabled>✗</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Financial Section -->
+            <section id="financeiro-section" class="content-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="faturamento-mes">R$ 45.000</span>
+                            <span class="stat-label">Faturamento do Mês</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💵</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="recebimentos">R$ 38.500</span>
+                            <span class="stat-label">Recebimentos</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="despesas">R$ 12.000</span>
+                            <span class="stat-label">Despesas do Mês</span>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight">
+                        <div class="stat-icon">💎</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="lucro">R$ 26.000</span>
+                            <span class="stat-label">Lucro Líquido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="financial-grid">
+                    <div class="financial-card">
+                        <h3>💳 Receitas por Forma de Pagamento</h3>
+                        <div class="chart-placeholder">
+                            <div class="chart-bar">
+                                <div class="bar-item">
+                                    <span class="bar-label">PIX</span>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 40%; background: #4caf50;"></div>
+                                    </div>
+                                    <span class="bar-value">R$ 18.000</span>
+                                </div>
+                                <div class="bar-item">
+                                    <span class="bar-label">Crédito</span>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 35%; background: #2196f3;"></div>
+                                    </div>
+                                    <span class="bar-value">R$ 15.750</span>
+                                </div>
+                                <div class="bar-item">
+                                    <span class="bar-label">Débito</span>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 15%; background: #ff9800;"></div>
+                                    </div>
+                                    <span class="bar-value">R$ 6.750</span>
+                                </div>
+                                <div class="bar-item">
+                                    <span class="bar-label">Dinheiro</span>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 10%; background: #9c27b0;"></div>
+                                    </div>
+                                    <span class="bar-value">R$ 4.500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="financial-card">
+                        <h3>📊 Despesas do Mês</h3>
+                        <table class="data-table small">
+                            <thead>
+                                <tr>
+                                    <th>Categoria</th>
+                                    <th>Valor</th>
+                                    <th>%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ingredientes</td>
+                                    <td>R$ 6.000</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>Funcionários</td>
+                                    <td>R$ 4.500</td>
+                                    <td>37.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Aluguel</td>
+                                    <td>R$ 1.500</td>
+                                    <td>12.5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Transações Recentes</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#TX001</td>
+                                <td><span class="type-badge entrada">Entrada</span></td>
+                                <td>Pedido #003 - Ana Paula</td>
+                                <td class="positive">+ R$ 59,50</td>
+                                <td>15/01/2025</td>
+                            </tr>
+                            <tr>
+                                <td>#TX002</td>
+                                <td><span class="type-badge saida">Saída</span></td>
+                                <td>Compra de ingredientes</td>
+                                <td class="negative">- R$ 450,00</td>
+                                <td>15/01/2025</td>
+                            </tr>
+                            <tr>
+                                <td>#TX003</td>
+                                <td><span class="type-badge entrada">Entrada</span></td>
+                                <td>Pedido #002 - João Silva</td>
+                                <td class="positive">+ R$ 57,00</td>
+                                <td>15/01/2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Inventory Section -->
+            <section id="estoque-section" class="content-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-produtos">45</span>
+                            <span class="stat-label">Total de Itens</span>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="estoque-baixo">5</span>
+                            <span class="stat-label">Estoque Baixo</span>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="estoque-ok">40</span>
+                            <span class="stat-label">Estoque OK</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="valor-estoque">R$ 8.500</span>
+                            <span class="stat-label">Valor em Estoque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Controle de Estoque</h3>
+                        <div class="table-filters">
+                            <button class="btn-export" onclick="gerarRelatorioEstoque()">📥 Baixar Relatório</button>
+                            <button class="btn-add" onclick="adicionarProduto()">+ Adicionar Produto</button>
+                            <select id="estoque-filter">
+                                <option value="todos">Todos</option>
+                                <option value="baixo">Estoque Baixo</option>
+                                <option value="medio">Estoque Médio</option>
+                                <option value="alto">Estoque Alto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Quantidade</th>
+                                <th>Unidade</th>
+                                <th>Custo Unit.</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="estoque-table-body">
+                            <tr data-produto="1" data-custo="4.50">
+                                <td>Farinha de Trigo</td>
+                                <td>Ingredientes</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="qty-btn" onclick="alterarQuantidade(1, -1)">-</button>
+                                        <input type="number" class="qty-input" id="qty-1" value="25" min="0" onchange="atualizarStatus(1)">
+                                        <button class="qty-btn" onclick="alterarQuantidade(1, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td>kg</td>
+                                <td>R$ 4,50</td>
+                                <td><span class="stock-badge" id="status-1">Alto</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="salvarProduto(1)">💾</button>
+                                </td>
+                            </tr>
+                            <tr data-produto="2" data-custo="12.00">
+                                <td>Ovos</td>
+                                <td>Ingredientes</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="qty-btn" onclick="alterarQuantidade(2, -1)">-</button>
+                                        <input type="number" class="qty-input" id="qty-2" value="5" min="0" onchange="atualizarStatus(2)">
+                                        <button class="qty-btn" onclick="alterarQuantidade(2, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td>bandeja</td>
+                                <td>R$ 12,00</td>
+                                <td><span class="stock-badge" id="status-2">Baixo</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="salvarProduto(2)">💾</button>
+                                </td>
+                            </tr>
+                            <tr data-produto="3" data-custo="45.00">
+                                <td>Chocolate Belga</td>
+                                <td>Coberturas</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="qty-btn" onclick="alterarQuantidade(3, -1)">-</button>
+                                        <input type="number" class="qty-input" id="qty-3" value="3" min="0" onchange="atualizarStatus(3)">
+                                        <button class="qty-btn" onclick="alterarQuantidade(3, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td>kg</td>
+                                <td>R$ 45,00</td>
+                                <td><span class="stock-badge" id="status-3">Baixo</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="salvarProduto(3)">💾</button>
+                                </td>
+                            </tr>
+                            <tr data-produto="4" data-custo="28.00">
+                                <td>Cream Cheese</td>
+                                <td>Recheios</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="qty-btn" onclick="alterarQuantidade(4, -1)">-</button>
+                                        <input type="number" class="qty-input" id="qty-4" value="8" min="0" onchange="atualizarStatus(4)">
+                                        <button class="qty-btn" onclick="alterarQuantidade(4, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td>kg</td>
+                                <td>R$ 28,00</td>
+                                <td><span class="stock-badge" id="status-4">Médio</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="salvarProduto(4)">💾</button>
+                                </td>
+                            </tr>
+                            <tr data-produto="5" data-custo="35.00">
+                                <td>Baunilha</td>
+                                <td>Essências</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="qty-btn" onclick="alterarQuantidade(5, -1)">-</button>
+                                        <input type="number" class="qty-input" id="qty-5" value="15" min="0" onchange="atualizarStatus(5)">
+                                        <button class="qty-btn" onclick="alterarQuantidade(5, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td>litros</td>
+                                <td>R$ 35,00</td>
+                                <td><span class="stock-badge" id="status-5">Alto</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="salvarProduto(5)">💾</button>
+                                </td>
+                            </tr>
+                            <tr data-produto="6" data-custo="18.00">
+                                <td>Morangos</td>
+                                <td>Frutas</td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="qty-btn" onclick="alterarQuantidade(6, -1)">-</button>
+                                        <input type="number" class="qty-input" id="qty-6" value="4" min="0" onchange="atualizarStatus(6)">
+                                        <button class="qty-btn" onclick="alterarQuantidade(6, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td>kg</td>
+                                <td>R$ 18,00</td>
+                                <td><span class="stock-badge" id="status-6">Baixo</span></td>
+                                <td>
+                                    <button class="btn-action" onclick="salvarProduto(6)">💾</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="relatorios-section" class="content-section">
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>📈 Vendas por Período</h3>
+                        </div>
+                        <div class="report-content">
+                            <div class="period-selector">
+                                <button class="period-btn active">Semanal</button>
+                                <button class="period-btn">Mensal</button>
+                                <button class="period-btn">Anual</button>
+                            </div>
+                            <div class="report-chart">
+                                <div class="chart-bars">
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 60%;"></div>
+                                        <span class="bar-label">Seg</span>
+                                    </div>
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 80%;"></div>
+                                        <span class="bar-label">Ter</span>
+                                    </div>
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 45%;"></div>
+                                        <span class="bar-label">Qua</span>
+                                    </div>
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 90%;"></div>
+                                        <span class="bar-label">Qui</span>
+                                    </div>
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 75%;"></div>
+                                        <span class="bar-label">Sex</span>
+                                    </div>
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 55%;"></div>
+                                        <span class="bar-label">Sáb</span>
+                                    </div>
+                                    <div class="chart-bar-item">
+                                        <div class="bar" style="height: 30%;"></div>
+                                        <span class="bar-label">Dom</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>🧁 Produtos Mais Vendidos</h3>
+                        </div>
+                        <div class="report-content">
+                            <table class="data-table small">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Vendas</th>
+                                        <th>%</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cupcake Red Velvet</td>
+                                        <td>145</td>
+                                        <td>18%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cupcake Nutella</td>
+                                        <td>132</td>
+                                        <td>16%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cupcake Chocolate</td>
+                                        <td>118</td>
+                                        <td>15%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cupcake Baunilha</td>
+                                        <td>98</td>
+                                        <td>12%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cupcake Morango</td>
+                                        <td>87</td>
+                                        <td>11%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <button class="btn-export" onclick="exportarRelatorio()">📥 Exportar Relatório (PDF)</button>
+                    <button class="btn-export" onclick="gerarRelatorio()">📊 Gerar Novo Relatório</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Adding New Product -->
+    <div id="add-product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>➕ Adicionar Novo Produto</h3>
+                <button class="modal-close" onclick="fecharModal()">&times;</button>
+            </div>
+            <form id="add-product-form" onsubmit="salvarNovoProduto(event)">
+                <div class="form-group">
+                    <label for="novo-produto-nome">Nome do Produto</label>
+                    <input type="text" id="novo-produto-nome" placeholder="Ex: Farinha de Trigo" required>
+                </div>
+                <div class="form-group">
+                    <label for="novo-produto-categoria">Categoria</label>
+                    <select id="novo-produto-categoria" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Ingredientes">Ingredientes</option>
+                        <option value="Coberturas">Coberturas</option>
+                        <option value="Recheios">Recheios</option>
+                        <option value="Essências">Essências</option>
+                        <option value="Frutas">Frutas</option>
+                        <option value="Embalagens">Embalagens</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="novo-produto-quantidade">Quantidade</label>
+                        <input type="number" id="novo-produto-quantidade" placeholder="0" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="novo-produto-unidade">Unidade</label>
+                        <select id="novo-produto-unidade" required>
+                            <option value="kg">kg</option>
+                            <option value="litros">litros</option>
+                            <option value="unidades">unidades</option>
+                            <option value="bandeja">bandeja</option>
+                            <option value="pacote">pacote</option>
+                            <option value="caixa">caixa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="novo-produto-custo">Custo Unitário (R$)</label>
+                    <input type="number" id="novo-produto-custo" placeholder="0,00" step="0.01" min="0" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn-save">💾 Salvar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
